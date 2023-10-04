@@ -1,17 +1,51 @@
+import { useContext } from "react";
+import { items } from "./items";
+import { CheckoutContext, FilterContext } from "./App";
+
 export default function Home() {
+  const { setCheckout, checkout } = useContext(CheckoutContext);
+  const { filter } = useContext(FilterContext);
   return (
-    <div className="card" style={{ width: "18rem" }}>
-      <img src="/assets/react.svg" className="card-img-top" alt="..." />
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the content.
-        </p>
-        <a href="#" className="btn btn-primary">
-          Go somewhere
-        </a>
-      </div>
-    </div>
+    <>
+      <main className="home-main">
+        {items
+          .filter((item) => {
+            if (filter == "") {
+              return true;
+            } else if (filter != "") {
+              return item.text.includes(filter);
+            }
+          })
+          .map((item) => (
+            <div className="card" style={{ width: "18rem" }} key={item.id}>
+              <img
+                src="/src/assets/react.svg"
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">Card title</h5>
+                <p className="card-text">{item.text}</p>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setCheckout([
+                      ...checkout,
+                      {
+                        id: item.id,
+                        text: item.text,
+                        buttonText: item.buttonText,
+                      },
+                    ]);
+                  }}
+                >
+                  {item.buttonText}
+                </button>
+              </div>
+            </div>
+          ))}
+      </main>
+    </>
   );
 }

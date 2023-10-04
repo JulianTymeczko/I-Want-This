@@ -1,0 +1,10 @@
+body {
+  font-family: monospace !important;
+}
+.home-main {
+  display: grid;
+  grid-template-columns: repeat(3, 18rem);
+  row-gap: 40px;
+  justify-content: space-around;
+  background-color: black;
+}
