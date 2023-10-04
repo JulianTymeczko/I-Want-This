@@ -1,7 +1,7 @@
 # I Want This
 ## Description
 
-I Want This is a bakery e-commerce store that allows its users to browse and purcahse baked goods. The single-page application is a user focused MERN stack app with the intention of allowing users to easily access and purchase items....
+I Want This is a bakery e-commerce store that allows its users to browse and purcahse baked goods. The single-page application is a user focused MERN stack app with the intention of allowing users to easily access and purchase items.
 
 ## Table of Contents 
 
@@ -22,4 +22,4 @@ add screenshots
 
 ## Credits
 
-
+Adam, Sophie, Matthew and Julian
