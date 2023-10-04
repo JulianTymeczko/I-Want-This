@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { FilterContext } from "./App";
 
 export default function Nav() {
+  const { setFilter } = useContext(FilterContext);
   return (
     <>
       <nav
@@ -77,6 +80,9 @@ export default function Nav() {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                }}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
