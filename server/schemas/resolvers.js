@@ -4,23 +4,23 @@ const resolvers = {
     Query: {
         // Category Query
       category: async () => {
-        return Category.find();
+        return await Category.find();
       },
 
        // Order Query
        order: async () => {
-        return Order.find();
+        return await Order.find();
       },
 
       // Product Query
       product: async () => {
-        return Product.find();
+        return await Product.find();
       },
 
 
       // User Query
       user: async () => {
-        return User.find();
+        return await User.find();
       },
   
     },
