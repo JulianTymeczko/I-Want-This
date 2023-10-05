@@ -81,40 +81,39 @@ export default function Nav() {
               <div
                 className="btn-group ms-4 me-4 mb-4 mt-4 mb-lg-0 mt-lg-0"
                 role="group"
-                aria-label="Basic radio toggle button group"
+                aria-label="Basic checkbox toggle button group"
               >
                 <input
-                  type="radio"
+                  type="checkbox"
                   className="btn-check"
-                  name="btnradio"
-                  id="btnradio1"
+                  id="btncheck1"
                   autoComplete="off"
-                  defaultChecked
+                  key="btncheck1"
                 />
-                <label className="btn btn-outline-primary" htmlFor="btnradio1">
-                  Vanilla
+                <label className="btn btn-outline-primary" htmlFor="btncheck1">
+                  Chocolate
                 </label>
 
                 <input
-                  type="radio"
+                  type="checkbox"
                   className="btn-check"
-                  name="btnradio"
-                  id="btnradio2"
+                  id="btncheck2"
                   autoComplete="off"
+                  key="btncheck2"
                 />
-                <label className="btn btn-outline-primary" htmlFor="btnradio2">
+                <label className="btn btn-outline-primary" htmlFor="btncheck2">
                   Strawberry
                 </label>
 
                 <input
-                  type="radio"
+                  type="checkbox"
                   className="btn-check"
-                  name="btnradio"
-                  id="btnradio3"
+                  id="btncheck3"
                   autoComplete="off"
+                  key="btncheck3"
                 />
-                <label className="btn btn-outline-primary" htmlFor="btnradio3">
-                  Chocolate
+                <label className="btn btn-outline-primary" htmlFor="btncheck3">
+                  Vanilla
                 </label>
               </div>
             </ul>
