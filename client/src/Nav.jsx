@@ -7,7 +7,7 @@ export default function Nav() {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg navbar-light"
+        className="navbar navbar-expand-lg navbar-light py-3"
         style={{ backgroundColor: "#e3f2fd" }}
       >
         <div className="container-fluid">
@@ -37,10 +37,15 @@ export default function Nav() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/login"
+                >
+                  Login
+                </Link>
               </li>
+
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -73,6 +78,45 @@ export default function Nav() {
                   </li>
                 </ul>
               </li>
+              <div
+                className="btn-group ms-4 me-4 mb-4 mt-4 mb-lg-0 mt-lg-0"
+                role="group"
+                aria-label="Basic radio toggle button group"
+              >
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autoComplete="off"
+                  defaultChecked
+                />
+                <label className="btn btn-outline-primary" htmlFor="btnradio1">
+                  Vanilla
+                </label>
+
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autoComplete="off"
+                />
+                <label className="btn btn-outline-primary" htmlFor="btnradio2">
+                  Strawberry
+                </label>
+
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnradio3"
+                  autoComplete="off"
+                />
+                <label className="btn btn-outline-primary" htmlFor="btnradio3">
+                  Chocolate
+                </label>
+              </div>
             </ul>
             <form className="d-flex">
               <input
@@ -84,6 +128,7 @@ export default function Nav() {
                   setFilter(e.target.value);
                 }}
               />
+
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
