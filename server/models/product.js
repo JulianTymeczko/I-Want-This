@@ -37,8 +37,6 @@ const productSchema = new Schema({
 // Product is a table using the model outlined by the schema
 const Product = mongoose.model('Product', productSchema);
 
-
-
 // // example product list
 // const products = [
 //     {
