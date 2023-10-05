@@ -2,6 +2,8 @@ import "./App.css";
 import Nav from "./Nav";
 import Home from "./Home";
 import Store from "./Store";
+import Login from "./Login.jsx";
+import SignUp from "./SignUp";
 import { createContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export const CheckoutContext = createContext();
@@ -18,6 +20,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/store" element={<Store />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
             </Routes>
           </CheckoutContext.Provider>
         </FilterContext.Provider>
