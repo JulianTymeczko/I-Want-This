@@ -32,8 +32,8 @@ type Category {
     name: String
     description: String
     image: String
-    price: Int
-    quantity: Int
+    price: Number
+    quantity: Number
     flavour: [String]
   }
 
