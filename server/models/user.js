@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+<<<<<<< HEAD
 const Order = require('server/models/Order.js');
+=======
+const Order = require('./Order.js');
+>>>>>>> a9bd52d6efbe9aadbd5d45f3d9f9b206c60ee1a6
 
 // User schema
 const User = new Schema({
