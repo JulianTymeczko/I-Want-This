@@ -19,6 +19,102 @@ db.once('open', async () => {
 
     // seed the products
     const products = await Product.insertMany([
+        {
+            name: 'Chocolate Cake',
+            description: 'Chocolate flavoured cupcake. A family favourite!',
+            image: './',
+            price: '20.99',
+            flavour: 'Chocolate',
+            category: categories[0]._id
+        },
+        {
+            name: 'Vanilla Cake',
+            description: "Vanilla flavoured cupcake. Stick to the basics and you'll never go wrong",
+            image: './',
+            price: '20.99',
+            flavour: 'Vanilla',
+            category: categories[0]._id
+        },
+        {
+            name: 'Apple Cinnamon Cake',
+            description: 'Icing-free apple cake decorated with cinnamon and sugar.',
+            image: './',
+            price: '25.99',
+            flavour: 'Apple Cinnamon',
+            category: categories[0]._id
+        },
+        {
+            name: 'Black Forest Cake',
+            description: 'A classic black forest cake, rich in flavour.',
+            image: './',
+            price: '25.99',
+            flavour: 'Black Forest',
+            category: categories[0]._id
+        },
+        {
+            name: 'Chocolate Cupcake',
+            description: 'Chocolate flavoured cupcake. A family favourite!',
+            image: './',
+            price: '2.99',
+            flavour: 'Chocolate',
+            category: categories[1]._id
+        },
+        {
+            name: 'Vanilla Cupcake',
+            description: "Vanilla flavoured cupcake. Stick to the basics and you'll never go wrong",
+            image: './',
+            price: '2.99',
+            flavour: 'Vanilla',
+            category: categories[1]._id
+        },
+        {
+            name: 'Apple Caramel Cupcake',
+            description: 'Apple cupcake with caramel icing. Perfect for fall or winter.',
+            image: './',
+            price: '3.99',
+            flavour: 'Apple Caramel',
+            category: categories[1]._id
+        },
+        {
+            name: 'Unicorn Cupcake',
+            description: 'White cupcake with sprinkles and colourful icing. Great for kids!',
+            image: './',
+            price: '2.99',
+            flavour: 'White',
+            category: categories[1]._id
+        },
+        {
+            name: 'Chocolate Donut',
+            description: 'Classic chocolate donut with a sugar glaze.',
+            image: './',
+            price: '1.99',
+            flavour: 'Chocolate',
+            category: categories[2]._id
+        },
+        {
+            name: 'Glazed Donut',
+            description: 'Classic plain donut with a sugar glaze.',
+            image: './',
+            price: '1.99',
+            flavour: 'Plain',
+            category: categories[2]._id
+        },
+        {
+            name: 'Apple Cinnamon Donut',
+            description: 'Apple cider donut covered in cinnamon and sugar.',
+            image: './',
+            price: '2.99',
+            flavour: 'Apple Cinnamon',
+            category: categories[2]._id
+        },
+        {
+            name: 'Jelly Donut',
+            description: 'Donut filly with strawberry jelly and coated in powdered sugar.',
+            image: './',
+            price: '1.99',
+            flavour: 'Jelly',
+            category: categories[2]._id
+        },
 
     ]);
 
