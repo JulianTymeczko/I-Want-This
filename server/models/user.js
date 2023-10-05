@@ -1,23 +1,39 @@
-// user.js
-// Example user data
-const users = [
-    {
-      id: 1,
-      username: "user1",
-      password: "password1",
-    },
-    {
-      id: 2,
-      username: "user2",
-      password: "password2",
-    },
-    // Add more user data here
-  ];
-  
-  function findUserByUsername(username) {
-    return users.find((user) => user.username === username);
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+const bcrypt = require('bcrypt');
+const Order = require('./Order');
+
+// User schema
+const User = new Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 8
+  },
+  orders: [Order.schema]
+})
+
+
+// create password middleware
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
   }
-  
-  module.exports = {
-    findUserByUsername,
-  };
+
+  next();
+});
+
+// check password against the hashed password
+userSchema.methods.isCorrectPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+
+module.exports = User;
