@@ -1,9 +1,17 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { FilterContext } from "./App";
+import {
+  FilterContext,
+  StrawberryContext,
+  VanillaContext,
+  ChocolateContext,
+} from "./App";
 
 export default function Nav() {
   const { setFilter } = useContext(FilterContext);
+  const { setVanilla, vanilla } = useContext(VanillaContext);
+  const { setStrawberry, strawberry } = useContext(StrawberryContext);
+  const { setChocolate, chocolate } = useContext(ChocolateContext);
   return (
     <>
       <nav
@@ -78,42 +86,66 @@ export default function Nav() {
                   </li>
                 </ul>
               </li>
+
               <div
-                className="btn-group ms-4 me-4 mb-4 mt-4 mb-lg-0 mt-lg-0"
+                className="btn-group  ms-4 me-4 mb-4 mt-4 mb-lg-0 mt-lg-0"
                 role="group"
-                aria-label="Basic checkbox toggle button group"
+                aria-label="Basic radio toggle button group"
               >
                 <input
-                  type="checkbox"
+                  type="radio"
                   className="btn-check"
-                  id="btncheck1"
+                  name="btnradio"
+                  id="btnradio0"
                   autoComplete="off"
-                  key="btncheck1"
+                  defaultChecked
                 />
-                <label className="btn btn-outline-primary" htmlFor="btncheck1">
-                  Chocolate
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autoComplete="off"
+                  onClick={() => {
+                    setVanilla(!vanilla);
+                    setStrawberry(false);
+                    setChocolate(false);
+                  }}
+                />
+                <label className="btn btn-outline-primary" htmlFor="btnradio1">
+                  Vanilla
                 </label>
 
                 <input
-                  type="checkbox"
+                  type="radio"
                   className="btn-check"
-                  id="btncheck2"
+                  name="btnradio"
+                  id="btnradio2"
                   autoComplete="off"
-                  key="btncheck2"
+                  onClick={() => {
+                    setStrawberry(!strawberry);
+                    setChocolate(false);
+                    setVanilla(false);
+                  }}
                 />
-                <label className="btn btn-outline-primary" htmlFor="btncheck2">
+                <label className="btn btn-outline-primary" htmlFor="btnradio2">
                   Strawberry
                 </label>
 
                 <input
-                  type="checkbox"
+                  type="radio"
                   className="btn-check"
-                  id="btncheck3"
+                  name="btnradio"
+                  id="btnradio3"
                   autoComplete="off"
-                  key="btncheck3"
+                  onClick={() => {
+                    setChocolate(!chocolate);
+                    setStrawberry(false);
+                    setVanilla(false);
+                  }}
                 />
-                <label className="btn btn-outline-primary" htmlFor="btncheck3">
-                  Vanilla
+                <label className="btn btn-outline-primary" htmlFor="btnradio3">
+                  Chocolate
                 </label>
               </div>
             </ul>
