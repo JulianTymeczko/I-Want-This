@@ -8,9 +8,20 @@ db.once('open', async () => {
     await Category.deleteMany();
 
     // seed all the categories
-    const categories = await Category.insterMany([
-
-    ]);
+    const categories = await Category.insertMany([
+    {
+        name: 'Cakes',
+        description: 'Delicious cakes for every occasion',
+    },
+    {
+        name: 'Cupcakes',
+        description: 'Cute and tasty cupcakes',
+    },
+    {
+        name: 'Donuts',
+        description: 'Classic and flavored donuts',
+    }
+]);
 
     console.log('Categories seeded.')
 
@@ -121,13 +132,33 @@ db.once('open', async () => {
     console.log('Products seeded.')
 
     // create fake users
-    await User.create({
-
-    });
-
-    await User.create({
-
-    });
+    const users = await User.insertMany([
+        {
+            name: 'User 1',
+            email: 'user1@example.com',
+            password: 'password1',
+        },
+        {
+            name: 'User 2',
+            email: 'user2@example.com',
+            password: 'password2',
+        },
+        {
+            name: 'User 3',
+            email: 'user3@example.com',
+            password: 'password3',
+        },
+        {
+            name: 'User 4',
+            email: 'user4@example.com',
+            password: 'password4',
+        },
+        {
+            name: 'User 5',
+            email: 'user5@example.com',
+            password: 'password5',
+        },
+    ]);
 
     console.log('Users seeded.')
 

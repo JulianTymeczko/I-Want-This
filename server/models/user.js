@@ -16,7 +16,12 @@ const User = new Schema({
     required: true,
     minlength: 8
   },
-  orders: [Orderrder.schema]
+  name: {
+    type: String,
+    required: true,
+    minlength:8
+  },
+  orders: [Order.schema]
 })
 
 
