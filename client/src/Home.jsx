@@ -1,10 +1,20 @@
 import { useContext } from "react";
 import { items } from "./items";
-import { CheckoutContext, FilterContext } from "./App";
-
+import {
+  CheckoutContext,
+  ChocolateContext,
+  FilterContext,
+  StrawberryContext,
+  VanillaContext,
+} from "./App";
+// import { useQuery } from "@apollo/client";
 export default function Home() {
+  // const { data } = useQuery(YOUR_GRAPHQL_QUERY);
   const { setCheckout, checkout } = useContext(CheckoutContext);
   const { filter } = useContext(FilterContext);
+  const { vanilla } = useContext(VanillaContext);
+  const { strawberry } = useContext(StrawberryContext);
+  const { chocolate } = useContext(ChocolateContext);
   return (
     <>
       <main className="home-main">
@@ -14,6 +24,27 @@ export default function Home() {
               return true;
             } else if (filter != "") {
               return item.text.includes(filter);
+            }
+          })
+          .filter((item) => {
+            if (!vanilla) {
+              return true;
+            } else if (vanilla) {
+              return item.category == "Vanilla";
+            }
+          })
+          .filter((item) => {
+            if (!strawberry) {
+              return true;
+            } else if (strawberry) {
+              return item.category == "Strawberry";
+            }
+          })
+          .filter((item) => {
+            if (!chocolate) {
+              return true;
+            } else if (chocolate) {
+              return item.category == "Chocolate";
             }
           })
           .map((item) => (
@@ -40,7 +71,7 @@ export default function Home() {
                     ]);
                   }}
                 >
-                  {item.buttonText}
+                  {item.category}
                 </button>
               </div>
             </div>
