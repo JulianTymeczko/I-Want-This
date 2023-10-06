@@ -2,33 +2,25 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`  
 
-""" ---Category query--- """
+""" ---Category Type--- """
 
 type Category {
-    _id: ID!
+    _id: ID
     name: String
   }
 
-  type Query {
-    category: [Category]!
-    category(categoryId: ID!): Category
-  }
-  """ ---Order query--- """
+  """ ---Order Type--- """
   
   type Order {
-    _id: ID!
+    _id: ID
     purchaseDate: String
     products: [Product]
   } 
 
-  type Query {
-    order: [Order]
-  }
-
-  """ ---Product query--- """
+  """ ---Product Type--- """
   
   type Product {
-    _id: ID!
+    _id: ID
     name: String
     description: String
     image: String
@@ -37,23 +29,29 @@ type Category {
     flavour: [String]
   }
 
-  type Query {
-    product: [Product]!
-    product(productId: ID!): Product
-  }
-
-  """ ---User query--- """
+  """ ---User Type--- """
   
   type User {
-    _id: ID!
+    _id: ID
     email: String!
     password: String!
     orders: [order]
   }
 
-  type Query {
-    me: User
-    users(limit: Int): [User]
+  """ ---Queries--- """
+  {
+    categories: [Category]
+    products:(category: ID, name: String, description: String, price: Decimal): [Product]
+    product(_id: ID): Product
+    user: User
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
+
+  }
+
+  """ ---Mutations--- """
+  {
+    
   }
   `;
 
