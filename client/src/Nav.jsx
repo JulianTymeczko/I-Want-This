@@ -147,6 +147,21 @@ export default function Nav() {
                 <label className="btn btn-outline-primary" htmlFor="btnradio3">
                   Chocolate
                 </label>
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnradio4"
+                  autoComplete="off"
+                  onClick={() => {
+                    setChocolate(false);
+                    setStrawberry(false);
+                    setVanilla(false);
+                  }}
+                />
+                <label className="btn btn-outline-primary" htmlFor="btnradio4">
+                  All
+                </label>
               </div>
             </ul>
             <form className="d-flex">
@@ -159,10 +174,6 @@ export default function Nav() {
                   setFilter(e.target.value);
                 }}
               />
-
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
             </form>
           </div>
         </div>
