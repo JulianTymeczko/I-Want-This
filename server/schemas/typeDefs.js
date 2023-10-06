@@ -9,6 +9,19 @@ type Category {
     name: String
   }
 
+  """ ---Product Type--- """
+  
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    price: Float
+    quantity: Int
+    flavour: String
+    category: Category
+  }
+
   """ ---Order Type--- """
   
   type Order {
@@ -17,31 +30,33 @@ type Category {
     products: [Product]
   } 
 
-  """ ---Product Type--- """
-  
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    price: Number
-    quantity: Number
-    flavour: [String]
-  }
-
   """ ---User Type--- """
   
   type User {
     _id: ID
-    email: String!
-    password: String!
-    orders: [order]
+    name: String
+    email: String
+    password: String
+    orders: [Order]
+  }
+
+  """ ---Checkout Type--- """
+
+  type Checkout {
+    session: ID
+  }
+
+  """ ---Auth Type--- """
+
+  type Auth {
+    token: ID
+    user: User
   }
 
   """ ---Queries--- """
   {
     categories: [Category]
-    products:(category: ID, name: String, description: String, price: Decimal): [Product]
+    products:(category: ID, name: String, description: String, price: Float): [Product]
     product(_id: ID): Product
     user: User
     order(_id: ID!): Order
@@ -51,7 +66,7 @@ type Category {
 
   """ ---Mutations--- """
   {
-    
+
   }
   `;
 
