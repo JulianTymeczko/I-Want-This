@@ -66,7 +66,7 @@ export default function Home() {
                       {
                         id: item.id,
                         text: item.text,
-                        buttonText: item.buttonText,
+                        category: item.category,
                       },
                     ]);
                   }}
