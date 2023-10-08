@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { CheckoutContext } from "./App";
+import { CheckoutContext, DefaultContext } from "./App";
 
 export default function Store() {
   const { checkout } = useContext(CheckoutContext);
+  const { defaultValue } = useContext(DefaultContext);
   return (
     <>
       <section className="h-100" style={{ backgroundColor: "#eee" }}>
@@ -35,7 +36,7 @@ export default function Store() {
                         <button
                           className="btn btn-link px-2"
                           onClick={() =>
-                            document.getElementById(`form${el.key}`).stepDown()
+                            document.getElementById(`form${el.id}`).stepDown()
                           }
                         >
                           <svg
@@ -48,10 +49,10 @@ export default function Store() {
                         </button>
 
                         <input
-                          id={`form${el.key}`}
+                          id={`form${el.id}`}
                           min="0"
-                          name={`quantity${el.key}`}
-                          defaultValue="1" //This will be an expression later on.
+                          name={`quantity${el.id}`}
+                          defaultValue="1"
                           type="number"
                           className="form-control form-control-sm"
                         />
@@ -59,7 +60,7 @@ export default function Store() {
                         <button
                           className="btn btn-link px-2"
                           onClick={() =>
-                            document.getElementById(`form${el.key}`).stepUp()
+                            document.getElementById(`form${el.id}`).stepUp()
                           }
                         >
                           <svg

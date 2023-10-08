@@ -3,6 +3,7 @@ import { items } from "./items";
 import {
   CheckoutContext,
   ChocolateContext,
+  DefaultContext,
   FilterContext,
   StrawberryContext,
   VanillaContext,
@@ -15,6 +16,25 @@ export default function Home() {
   const { vanilla } = useContext(VanillaContext);
   const { strawberry } = useContext(StrawberryContext);
   const { chocolate } = useContext(ChocolateContext);
+  const { setDefaultValue, defaultValue } = useContext(DefaultContext);
+  const addToCart = (item) => {
+    const itemInCart = checkout.find((cartItem) => cartItem.id === item.id);
+
+    if (itemInCart) {
+      return;
+    } else {
+      setCheckout([
+        ...checkout,
+        {
+          id: item.id,
+          text: item.text,
+          category: item.category,
+          defaultValue: item.defaultValue,
+        },
+      ]);
+    }
+  };
+
   return (
     <>
       <main className="home-main">
@@ -61,14 +81,7 @@ export default function Home() {
                   type="button"
                   className="btn btn-primary"
                   onClick={() => {
-                    setCheckout([
-                      ...checkout,
-                      {
-                        id: item.id,
-                        text: item.text,
-                        category: item.category,
-                      },
-                    ]);
+                    addToCart(item);
                   }}
                 >
                   {item.category}
