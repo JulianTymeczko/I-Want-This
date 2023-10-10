@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('Order');
+const Order = require('./order');
 
 // User schema
 const User = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: trues
   },
   password: {
     type: String,
@@ -21,7 +21,7 @@ const User = new Schema({
     required: true,
     minlength:8
   },
-  orders: [Order.schema]
+  orders: [Order.Schema]
 })
 
 
