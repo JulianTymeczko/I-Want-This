@@ -2,8 +2,12 @@ import { useContext } from "react";
 import { CheckoutContext, DefaultContext } from "./App";
 
 export default function Store() {
-  const { checkout } = useContext(CheckoutContext);
+  const { checkout, setCheckout } = useContext(CheckoutContext);
   const { defaultValue } = useContext(DefaultContext);
+  const removeObject = (IdToRemove) => {
+    const updatedCheckout = checkout.filter((item) => item.id !== IdToRemove);
+    setCheckout(updatedCheckout);
+  };
   return (
     <>
       <section className="h-100" style={{ backgroundColor: "#eee" }}>
@@ -15,6 +19,15 @@ export default function Store() {
               </div>
               {checkout.map((el) => (
                 <div className="card rounded-3 mb-4" key={el.id}>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    style={{ position: "absolute", right: "30px", top: "20px" }}
+                    onClick={() => {
+                      removeObject(el.id);
+                    }}
+                  ></button>
                   <div className="card-body p-4">
                     <div className="row d-flex justify-content-between align-items-center">
                       <div className="col-md-2 col-lg-2 col-xl-2">
@@ -50,7 +63,7 @@ export default function Store() {
 
                         <input
                           id={`form${el.id}`}
-                          min="0"
+                          min="1"
                           name={`quantity${el.id}`}
                           defaultValue="1"
                           type="number"
