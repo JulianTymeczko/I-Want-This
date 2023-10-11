@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('Order');
+const Order = require('./order');
 
 // User schema
-const User = new Schema({
+const userSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -22,6 +22,7 @@ const User = new Schema({
     minlength:8
   },
   orders: [Order.schema]
+  
 })
 
 
@@ -40,5 +41,7 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
+
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
