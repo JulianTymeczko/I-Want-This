@@ -21,6 +21,8 @@ export const ADD_ORDER = gql`
         description
         price
         quantity
+        image
+        flavour
         category {
           name
         }
