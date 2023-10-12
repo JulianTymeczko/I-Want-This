@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.1"
+  },
+  "config": {
+    "MONGODB_URI": "your-mongodb-connection-string"
   }
 }
