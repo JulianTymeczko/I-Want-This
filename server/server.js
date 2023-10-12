@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
-const mongoose = require('mongoose'); // Added Mongoose import
+const mongoose = require('mongoose');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 
@@ -18,14 +18,10 @@ app.use('/images', express.static(path.join(__dirname, '../client/images')));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 
-  app.get("*", (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 }
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
 
 // Connect to the database
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/i-want-this', {
@@ -46,7 +42,7 @@ db.once('open', () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // context: authMiddleware
+    context: authMiddleware, // Include your authentication middleware here
   });
 
   server.applyMiddleware({ app });
