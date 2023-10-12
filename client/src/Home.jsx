@@ -8,9 +8,10 @@ import {
   StrawberryContext,
   VanillaContext,
 } from "./App";
-// import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import {QUERY_PRODUCTS} from './utils/queries';
 export default function Home() {
-  // const { data } = useQuery(YOUR_GRAPHQL_QUERY);
+  const { data } = useQuery(QUERY_PRODUCTS);
   const { setCheckout, checkout } = useContext(CheckoutContext);
   const { filter } = useContext(FilterContext);
   const { vanilla } = useContext(VanillaContext);
