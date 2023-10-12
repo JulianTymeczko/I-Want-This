@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Connect to the database
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/i-want-this', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/i-want-this', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
