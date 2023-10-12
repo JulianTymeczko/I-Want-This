@@ -35,7 +35,7 @@ db.on('error', (err) => {
   console.error(`Mongoose connection error: ${err}`);
 });
 
-db.once('open', () => {
+db.once('open', async () => {
   // The database connection is open and ready for use
   // You can start your Apollo Server here
 
@@ -45,6 +45,7 @@ db.once('open', () => {
     context: authMiddleware, // Include your authentication middleware here
   });
 
+  await server.start();
   server.applyMiddleware({ app });
 
   app.listen(PORT, () => {
