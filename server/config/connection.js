@@ -1,25 +1,22 @@
 const mongoose = require('mongoose');
 
-// The connection URI can come from the MONGODB_URI environment variable or use a default URI.
+// Use the MONGODB_URI environment variable if available, or a default URI if not set.
 const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/i-want-this';
 
-// Options to pass to the MongoDB driver for additional configuration if needed.
+// Options for MongoDB connection.
 const options = {
-  // Add any connection options here (e.g., useUnifiedTopology, useNewUrlParser, etc.).
+  useNewUrlParser: true, // Adjust the options as needed.
+  useUnifiedTopology: true,
 };
 
-// Create a function to establish the MongoDB connection.
-async function connectToDatabase() {
-  try {
-    await mongoose.connect(uri, options);
+// Establish the MongoDB connection.
+mongoose.connect(uri, options)
+  .then(() => {
     console.log('Connected to MongoDB');
-  } catch (error) {
+  })
+  .catch(error => {
     console.error('Error connecting to MongoDB:', error);
-  }
-}
+  });
 
-// Export the connection function for use in your application.
-module.exports = {
-  connectToDatabase,
-  connection: mongoose.connection, // You can still access the connection object if needed.
-};
+// Export the connection for use in your application.
+module.exports = mongoose.connection;
