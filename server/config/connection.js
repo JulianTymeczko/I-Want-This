@@ -19,4 +19,5 @@ mongoose.connect(uri, options)
   });
 
 // Export the connection for use in your application.
-module.exports = mongoose.connection;
+const db = mongoose.connection;
+module.exports = db;
