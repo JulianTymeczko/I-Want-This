@@ -16,6 +16,6 @@
     "concurrently": "^8.2.1"
   },
   "config": {
-    "MONGODB_URI": "your-mongodb-connection-string"
+    "MONGODB_URI": "'mongodb://localhost:27017/i-want-this'"
   }
 }
