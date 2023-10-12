@@ -31,6 +31,11 @@ const productSchema = new Schema({
     min: 0,
     default: 0
   },
+
+ 
+  flavour: {
+    type: String
+  },
   
   category: {
     type: Schema.Types.ObjectId,

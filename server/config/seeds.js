@@ -33,7 +33,7 @@ db.once('open', async () => {
         {
             name: 'Chocolate Cake',
             description: 'Chocolate flavoured cupcake. A family favourite!',
-            image: './',
+            image: 'chocolate-cake.PNG',
             price: '20.99',
             flavour: 'Chocolate',
             category: categories[0]._id
@@ -41,7 +41,7 @@ db.once('open', async () => {
         {
             name: 'Vanilla Cake',
             description: "Vanilla flavoured cupcake. Stick to the basics and you'll never go wrong",
-            image: './',
+            image: 'vanilla-cake.PNG',
             price: '20.99',
             flavour: 'Vanilla',
             category: categories[0]._id
@@ -49,7 +49,7 @@ db.once('open', async () => {
         {
             name: 'Apple Cinnamon Cake',
             description: 'Icing-free apple cake decorated with cinnamon and sugar.',
-            image: './',
+            image: 'apple-cinnamon-cake',
             price: '25.99',
             flavour: 'Apple Cinnamon',
             category: categories[0]._id
@@ -57,7 +57,7 @@ db.once('open', async () => {
         {
             name: 'Black Forest Cake',
             description: 'A classic black forest cake, rich in flavour.',
-            image: './',
+            image: 'black-forest-cake.PNG',
             price: '25.99',
             flavour: 'Black Forest',
             category: categories[0]._id
@@ -65,7 +65,7 @@ db.once('open', async () => {
         {
             name: 'Chocolate Cupcake',
             description: 'Chocolate flavoured cupcake. A family favourite!',
-            image: './',
+            image: 'chocolate-cupcake.PNG',
             price: '2.99',
             flavour: 'Chocolate',
             category: categories[1]._id
@@ -73,7 +73,7 @@ db.once('open', async () => {
         {
             name: 'Vanilla Cupcake',
             description: "Vanilla flavoured cupcake. Stick to the basics and you'll never go wrong",
-            image: './',
+            image: 'vanilla-cupcake.PNG',
             price: '2.99',
             flavour: 'Vanilla',
             category: categories[1]._id
@@ -81,23 +81,23 @@ db.once('open', async () => {
         {
             name: 'Apple Caramel Cupcake',
             description: 'Apple cupcake with caramel icing. Perfect for fall or winter.',
-            image: './',
+            image: 'apple-caramel-cupcake.PNG',
             price: '3.99',
             flavour: 'Apple Caramel',
             category: categories[1]._id
         },
         {
             name: 'Unicorn Cupcake',
-            description: 'White cupcake with sprinkles and colourful icing. Great for kids!',
-            image: './',
+            description: 'Vanilla cupcake with sprinkles and colourful icing. Great for kids!',
+            image: 'unicorn-cupcake.PNG',
             price: '2.99',
-            flavour: 'White',
+            flavour: 'Vanilla',
             category: categories[1]._id
         },
         {
             name: 'Chocolate Donut',
-            description: 'Classic chocolate donut with a sugar glaze.',
-            image: './',
+            description: 'Classic chocolate donut with chocolate icing.',
+            image: 'chocolate-donut.PNG',
             price: '1.99',
             flavour: 'Chocolate',
             category: categories[2]._id
@@ -105,7 +105,7 @@ db.once('open', async () => {
         {
             name: 'Glazed Donut',
             description: 'Classic plain donut with a sugar glaze.',
-            image: './',
+            image: 'glazed-donut.PNG',
             price: '1.99',
             flavour: 'Plain',
             category: categories[2]._id
@@ -113,15 +113,15 @@ db.once('open', async () => {
         {
             name: 'Apple Cinnamon Donut',
             description: 'Apple cider donut covered in cinnamon and sugar.',
-            image: './',
+            image: 'apple-cinnamon-donut.PNG',
             price: '2.99',
             flavour: 'Apple Cinnamon',
             category: categories[2]._id
         },
         {
             name: 'Jelly Donut',
-            description: 'Donut filly with strawberry jelly and coated in powdered sugar.',
-            image: './',
+            description: 'Donut filly with strawberry jelly and topped with powdered sugar.',
+            image: 'jelly-donut.PNG',
             price: '1.99',
             flavour: 'Jelly',
             category: categories[2]._id

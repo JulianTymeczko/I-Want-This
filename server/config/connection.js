@@ -1,5 +1,23 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/i-want-this');
+// Use the MONGODB_URI environment variable if available, or a default URI if not set.
+const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/i-want-this';
 
-module.exports = mongoose.connection;
+// Options for MongoDB connection.
+const options = {
+  useNewUrlParser: true, // Adjust the options as needed.
+  useUnifiedTopology: true,
+};
+
+// Establish the MongoDB connection.
+mongoose.connect(uri, options)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(error => {
+    console.error('Error connecting to MongoDB:', error);
+  });
+
+// Export the connection for use in your application.
+const db = mongoose.connection;
+module.exports = db;
