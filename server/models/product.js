@@ -13,6 +13,11 @@ const productSchema = new Schema({
   description: {
     type: String
   },
+  flavour: {
+    type: String
+    
+  
+  },
   image: {
     type: String
   },
@@ -26,7 +31,7 @@ const productSchema = new Schema({
     min: 0,
     default: 0
   },
-  flavour: [String],
+  
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
