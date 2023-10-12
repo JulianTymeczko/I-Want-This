@@ -5,7 +5,7 @@ export default function Store() {
   const { checkout, setCheckout } = useContext(CheckoutContext);
   const { defaultValue } = useContext(DefaultContext);
   const removeObject = (IdToRemove) => {
-    const updatedCheckout = checkout.filter((item) => item.id !== IdToRemove);
+    const updatedCheckout = checkout.filter((item) => item._id !== IdToRemove);
     setCheckout(updatedCheckout);
   };
   return (
@@ -18,14 +18,14 @@ export default function Store() {
                 <h3 className="fw-normal mb-0 text-black">Shopping Cart</h3>
               </div>
               {checkout.map((el) => (
-                <div className="card rounded-3 mb-4" key={el.id}>
+                <div className="card rounded-3 mb-4" key={el._id}>
                   <button
                     type="button"
                     className="btn-close"
                     aria-label="Close"
                     style={{ position: "absolute", right: "30px", top: "20px" }}
                     onClick={() => {
-                      removeObject(el.id);
+                      removeObject(el._id);
                     }}
                   ></button>
                   <div className="card-body p-4">
@@ -38,18 +38,18 @@ export default function Store() {
                         />
                       </div>
                       <div className="col-md-3 col-lg-3 col-xl-3">
-                        <p className="lead fw-normal mb-2">{el.text}</p>
+                        <p className="lead fw-normal mb-2">{el.name}</p>
                         <p>
                           <span className="text-muted">Size: </span>M{" "}
                           <span className="text-muted">Color: </span>
-                          {el.category}
+                          {el.flavour}
                         </p>
                       </div>
                       <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button
                           className="btn btn-link px-2"
                           onClick={() =>
-                            document.getElementById(`form${el.id}`).stepDown()
+                            document.getElementById(`form${el._id}`).stepDown()
                           }
                         >
                           <svg
@@ -62,9 +62,9 @@ export default function Store() {
                         </button>
 
                         <input
-                          id={`form${el.id}`}
+                          id={`form${el._id}`}
                           min="1"
-                          name={`quantity${el.id}`}
+                          name={`quantity${el._id}`}
                           defaultValue="1"
                           type="number"
                           className="form-control form-control-sm"
@@ -73,7 +73,7 @@ export default function Store() {
                         <button
                           className="btn btn-link px-2"
                           onClick={() =>
-                            document.getElementById(`form${el.id}`).stepUp()
+                            document.getElementById(`form${el._id}`).stepUp()
                           }
                         >
                           <svg
