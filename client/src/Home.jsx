@@ -80,7 +80,7 @@ export default function Home() {
                   />
                   <div className="card-body">
                     <h5 className="card-title">{`${item.name}     ${item.price}`}</h5>
-                    <p className="card-text">{item.description}</p>
+                    <p className="card-text">{`${item.flavour} ${item.description}`}</p>
                     <button
                       type="button"
                       className="btn btn-primary"
@@ -88,7 +88,7 @@ export default function Home() {
                         addToCart(item);
                       }}
                     >
-                      {item.flavour}
+                      Add To Cart
                     </button>
                   </div>
                 </div>
