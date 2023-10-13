@@ -39,6 +39,14 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+// Define an async function to start the ApolloServer and listen for incoming requests
+async function startApolloServer() {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware,
+  });
+
   await server.start();
   server.applyMiddleware({ app });
 
@@ -46,3 +54,7 @@ db.once('open', () => {
     console.log(`API server running on port ${PORT}!`);
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
+}
+
+// Call the async function to start the server
+startApolloServer();
