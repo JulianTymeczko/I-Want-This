@@ -33,9 +33,8 @@ Follow the steps to run the application:
 Frontend:
 
 - React
-- Redux (for state management)
 - Axios (for API requests)
-- Material-UI (for UI components)
+- Bootstrap (for UI components)
 
 Backend:
 
@@ -51,6 +50,7 @@ Development Tools:
 
 - npm (Node Package Manager)
 - Git
+
 ## Usage
 
 add screenshots
