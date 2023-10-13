@@ -16,7 +16,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8
   },
-  name: {
+  username: {
     type: String,
     required: true,
     // minlength:8

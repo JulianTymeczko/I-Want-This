@@ -51,7 +51,7 @@ db.once('open', async () => {
             description: 'Icing-free apple cake decorated with cinnamon and sugar.',
             image: 'apple-cinnamon-cake',
             price: '25.99',
-            flavour: 'Apple Cinnamon',
+            flavour: '',
             category: categories[0]._id
         },
         {
@@ -59,7 +59,7 @@ db.once('open', async () => {
             description: 'A classic black forest cake, rich in flavour.',
             image: 'black-forest-cake.PNG',
             price: '25.99',
-            flavour: 'Black Forest',
+            flavour: 'Chocolate',
             category: categories[0]._id
         },
         {
@@ -83,7 +83,7 @@ db.once('open', async () => {
             description: 'Apple cupcake with caramel icing. Perfect for fall or winter.',
             image: 'apple-caramel-cupcake.PNG',
             price: '3.99',
-            flavour: 'Apple Caramel',
+            flavour: '',
             category: categories[1]._id
         },
         {
@@ -107,7 +107,7 @@ db.once('open', async () => {
             description: 'Classic plain donut with a sugar glaze.',
             image: 'glazed-donut.PNG',
             price: '1.99',
-            flavour: 'Plain',
+            flavour: 'Vanilla',
             category: categories[2]._id
         },
         {
@@ -115,7 +115,7 @@ db.once('open', async () => {
             description: 'Apple cider donut covered in cinnamon and sugar.',
             image: 'apple-cinnamon-donut.PNG',
             price: '2.99',
-            flavour: 'Apple Cinnamon',
+            flavour: '',
             category: categories[2]._id
         },
         {
@@ -123,7 +123,7 @@ db.once('open', async () => {
             description: 'Donut filly with strawberry jelly and topped with powdered sugar.',
             image: 'jelly-donut.PNG',
             price: '1.99',
-            flavour: 'Jelly',
+            flavour: 'Strawberry',
             category: categories[2]._id
         },
 
