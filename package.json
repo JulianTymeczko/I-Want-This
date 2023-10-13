@@ -17,5 +17,8 @@
   },
   "config": {
     "MONGODB_URI": "'mongodb://localhost:27017/i-want-this'"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }
