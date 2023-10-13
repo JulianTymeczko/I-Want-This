@@ -24,26 +24,20 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Connect to the database
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://27017/i-want-this', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
 
-db.on('error', (err) => {
-  console.error(`Mongoose connection error: ${err}`);
+db.on('error', (error) => {
+  console.error('Mongoose connection error:', error);
 });
 
-db.once('open', async () => {
-  // The database connection is open and ready for use
-  // You can start your Apollo Server here
-
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: authMiddleware, // Include your authentication middleware here
-  });
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
   await server.start();
   server.applyMiddleware({ app });
@@ -52,4 +46,3 @@ db.once('open', async () => {
     console.log(`API server running on port ${PORT}!`);
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
-});
