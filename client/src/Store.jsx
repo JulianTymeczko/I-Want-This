@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { CheckoutContext, DefaultContext } from "./App";
-import { loadStripe } from '@stripe/stripe-js';
-import { useLazyQuery } from '@apollo/client';
-import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from "@stripe/stripe-js";
+import { useLazyQuery } from "@apollo/client";
+import { QUERY_CHECKOUT } from "../../utils/queries";
 
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
-const stripePromise = loadStripe('sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHayAnrIUPTXd7vYwfMvu54cWXtfMFbzuqO2yujg3mZXVRkKgV1v1Es00eAkx7p1j');
- function Store() {
+const stripePromise = loadStripe(
+  "sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHayAnrIUPTXd7vYwfMvu54cWXtfMFbzuqO2yujg3mZXVRkKgV1v1Es00eAkx7p1j",
+);
+function Store() {
   const { checkout, setCheckout } = useContext(CheckoutContext);
   const { defaultValue } = useContext(DefaultContext);
   const removeObject = (IdToRemove) => {
@@ -24,11 +26,10 @@ const stripePromise = loadStripe('sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHay
     }
   }, [data]);
 
-
   function calculateTotal() {
     let sum = 0;
-    state.cart.forEach((item) => {
-      sum += item.price * item.purchaseQuantity;
+    checkout.forEach((el) => {
+      sum += el.price * parseInt(document.getElementById(`form${el._id}`));
     });
     return sum.toFixed(2);
   }
@@ -113,9 +114,9 @@ const stripePromise = loadStripe('sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHay
 
                         <button
                           className="btn btn-link px-2"
-                          onClick={() =>
-                            document.getElementById(`form${el._id}`).stepUp()
-                          }
+                          onClick={() => {
+                            document.getElementById(`form${el._id}`).stepUp();
+                          }}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +128,7 @@ const stripePromise = loadStripe('sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHay
                         </button>
                       </div>
                       <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                        <h5 className="mb-0">$499.00</h5>
+                        <h5 className="mb-0">{el.price}</h5>
                       </div>
                       <div className="col-md-1 col-lg-1 col-xl-1 text-end">
                         <a href="#!" className="text-danger">
