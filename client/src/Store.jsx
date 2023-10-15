@@ -9,6 +9,7 @@ const stripePromise = loadStripe('sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHay
  function Store() {
   const { checkout, setCheckout } = useContext(CheckoutContext);
   const { defaultValue } = useContext(DefaultContext);
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   const removeObject = (IdToRemove) => {
     const updatedCheckout = checkout.filter((item) => item._id !== IdToRemove);
     setCheckout(updatedCheckout);
