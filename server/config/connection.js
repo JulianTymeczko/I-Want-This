@@ -24,18 +24,18 @@ const db = mongoose.connection;
 
 // Event: MongoDB connected
 db.on('connected', () => {
-  console.log('MongoDB connected');
+  console.log('Mongoose connected to MongoDB');
 });
 
 // Event: MongoDB error
 db.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
+  console.error('Mongoose connection error:', err);
 });
 
 // Event: MongoDB disconnected
 db.on('disconnected', () => {
-  console.log('MongoDB disconnected');
-});
+  console.log('Mongoose disconnected from MongoDB');
+}); 
 
 // Event: Close the MongoDB connection when the Node.js process ends
 process.on('SIGINT', () => {
