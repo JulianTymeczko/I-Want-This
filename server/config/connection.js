@@ -10,15 +10,6 @@ const options = {
 };
 
 // Establish the MongoDB connection.
-mongoose.connect(uri, options)
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch(error => {
-    console.error('Error connecting to MongoDB:', error);
-  });
-
-  // Establish the MongoDB connection.
 console.log('Connecting to MongoDB with URI:', uri);
 mongoose.connect(uri, options)
   .then(() => {
