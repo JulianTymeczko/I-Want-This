@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Use the MONGODB_URI environment variable if available, or a default URI if not set.
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/i-want-this";
+const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/i-want-this";
 
 // Options for MongoDB connection.
 const options = {

@@ -5,6 +5,7 @@ const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -46,21 +47,21 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Connect to the database
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// // Connect to the database
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.on('error', (error) => {
-  console.error('Mongoose connection error:', error);
-});
+// db.on('error', (error) => {
+//   console.error('Mongoose connection error:', error);
+// });
 
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+// db.once('open', () => {
+//   console.log('Connected to MongoDB');
+// });
 
 // Define an async function to start the ApolloServer and listen for incoming requests
 async function startApolloServer() {
@@ -73,11 +74,15 @@ async function startApolloServer() {
   await server.start();
   server.applyMiddleware({ app });
 
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-  });
-}
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    });
+  })
+
+  
+};
 
 // Call the async function to start the server
 startApolloServer();
