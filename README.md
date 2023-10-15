@@ -33,7 +33,7 @@ Follow the steps to run the application:
 Frontend:
 
 - React
-- Axios (for API requests)
+- HTML, CSS, JavaScript
 - Bootstrap (for UI components)
 
 Backend:
