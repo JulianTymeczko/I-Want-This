@@ -18,6 +18,16 @@ mongoose.connect(uri, options)
     console.error('Error connecting to MongoDB:', error);
   });
 
+  // Establish the MongoDB connection.
+console.log('Connecting to MongoDB with URI:', uri);
+mongoose.connect(uri, options)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(error => {
+    console.error('Error connecting to MongoDB:', error);
+  });
+
 // Handle connection events
 const db = mongoose.connection;
 
