@@ -1,13 +1,54 @@
 import { useContext } from "react";
 import { CheckoutContext, DefaultContext } from "./App";
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
+import { QUERY_CHECKOUT } from '../../utils/queries';
 
-export default function Store() {
+// stripePromise returns a promise with the stripe object as soon as the Stripe package loads
+const stripePromise = loadStripe('sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHayAnrIUPTXd7vYwfMvu54cWXtfMFbzuqO2yujg3mZXVRkKgV1v1Es00eAkx7p1j');
+ function Store() {
   const { checkout, setCheckout } = useContext(CheckoutContext);
   const { defaultValue } = useContext(DefaultContext);
   const removeObject = (IdToRemove) => {
     const updatedCheckout = checkout.filter((item) => item._id !== IdToRemove);
     setCheckout(updatedCheckout);
   };
+
+  // We check to see if there is a data object that exists, if so this means that a checkout session was returned from the backend
+  // Then we should redirect to the checkout with a reference to our session id
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
+
+
+  function calculateTotal() {
+    let sum = 0;
+    state.cart.forEach((item) => {
+      sum += item.price * item.purchaseQuantity;
+    });
+    return sum.toFixed(2);
+  }
+
+  // When the submit checkout method is invoked, loop through each item in the cart
+  // Add each item id to the productIds array and then invoke the getCheckout query passing an object containing the id for all our products
+  function submitCheckout() {
+    const productIds = [];
+
+    state.cart.forEach((item) => {
+      for (let i = 0; i < item.purchaseQuantity; i++) {
+        productIds.push(item._id);
+      }
+    });
+
+    getCheckout({
+      variables: { products: productIds },
+    });
+  }
+
   return (
     <>
       <section className="h-100" style={{ backgroundColor: "#eee" }}>
@@ -103,6 +144,7 @@ export default function Store() {
                   <button
                     type="button"
                     className="btn btn-warning btn-block btn-lg"
+                    onClick={submitCheckout}
                   >
                     Proceed to Pay
                   </button>
@@ -115,3 +157,4 @@ export default function Store() {
     </>
   );
 }
+export default Store;
