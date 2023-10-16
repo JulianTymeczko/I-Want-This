@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CheckoutContext, DefaultContext } from "./App";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";
@@ -26,15 +26,21 @@ function Store() {
       });
     }
   }, [data]);
-
   function calculateTotal() {
     let sum = 0;
     checkout.forEach((el) => {
-      sum += el.price * parseInt(document.getElementById(`form${el._id}`));
+      sum +=
+        el.price * parseInt(document.getElementById(`form${el._id}`)?.value);
+      console.log(parseInt(document.getElementById(`form${el._id}`)));
+      console.log(el);
     });
-    return sum.toFixed(2);
+    setTotal(sum.toFixed(2));
   }
+  useEffect(() => {
+    calculateTotal();
+  });
 
+  const [total, setTotal] = useState(0);
   // When the submit checkout method is invoked, loop through each item in the cart
   // Add each item id to the productIds array and then invoke the getCheckout query passing an object containing the id for all our products
   function submitCheckout() {
@@ -43,7 +49,7 @@ function Store() {
     checkout.forEach((item) => {
       for (
         let i = 0;
-        i < parseInt(document.getElementById(`form${item._id}`));
+        i < parseInt(document.getElementById(`form${item._id}`)?.value);
         i++
       ) {
         productIds.push(item._id);
@@ -62,7 +68,9 @@ function Store() {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-10">
               <div className="d-flex justify-content-between align-items-center mb-4">
-                <h3 id="store-Cart" className="fw-normal mb-7 text-black">Shopping Cart</h3>
+                <h3 id="store-Cart" className="fw-normal mb-7 text-black">
+                  Shopping Cart
+                </h3>
               </div>
               {checkout.map((el) => (
                 <div className="card rounded-3 mb-4" key={el._id}>
@@ -95,9 +103,10 @@ function Store() {
                       <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button
                           className="btn btn-link px-2"
-                          onClick={() =>
-                            document.getElementById(`form${el._id}`).stepDown()
-                          }
+                          onClick={() => {
+                            document.getElementById(`form${el._id}`).stepDown();
+                            calculateTotal();
+                          }}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -121,6 +130,7 @@ function Store() {
                           className="btn btn-link px-2"
                           onClick={() => {
                             document.getElementById(`form${el._id}`).stepUp();
+                            calculateTotal();
                           }}
                         >
                           <svg
@@ -147,7 +157,7 @@ function Store() {
 
               <div className="card">
                 <div className="card-body">
-                  <div id="amount-total">{calculateTotal()}</div>
+                  <div id="amount-total">{total}</div>
                   <button
                     type="button"
                     className="btn btn-warning btn-block btn-lg"
