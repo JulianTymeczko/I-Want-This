@@ -14,6 +14,7 @@ import {
 } from "@apollo/client";
 
 import { setContext } from "@apollo/client/link/context";
+import Logout from "./Logout";
 
 export const CheckoutContext = createContext();
 export const FilterContext = createContext();
@@ -60,6 +61,7 @@ export default function App() {
                         <Route path="/store" element={<Store />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
+                        <Route path="/logout" element={<Logout />} />
                       </Routes>
                     </CheckoutContext.Provider>
                   </FilterContext.Provider>
