@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.5",
-    "@stripe/stripe-js": "^2.1.7",
+    "@stripe/stripe-js": "^2.1.8",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
@@ -26,7 +26,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
-    "stripe": "^13.10.0",
     "vite": "^4.4.5"
   }
 }
