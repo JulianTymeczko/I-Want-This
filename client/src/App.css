@@ -6,12 +6,12 @@ body {
   grid-template-columns: repeat(3, 18rem);
   row-gap: 40px;
   justify-content: space-around;
-  background-color: #001A23;
+  background-color: #001a23;
 }
 
 /* Card Css */
 .card {
-  background-color: #31493C;
+  background-color: #31493c;
   border-style: solid;
   border-width: 1px;
   border-radius: 50px;
@@ -23,9 +23,9 @@ body {
 }
 
 .card-img-top {
-background-color: #7A9E7E;
-border-radius: 50px 50px 50px 50px;
-padding: 20px;
+  background-color: #7a9e7e;
+  border-radius: 50px 50px 50px 50px;
+  padding: 20px;
 }
 
 .card-img-top:hover {
@@ -33,19 +33,20 @@ padding: 20px;
 }
 
 .card-body {
-background-color: #B3EFB2;
-/* display: flex; */
+  background-color: #b3efb2;
+  /* display: flex; */
 }
 
 .card-title {
   display: flex;
-  
 }
 
 .btn-primary {
-background-color: #001A23;
+  background-color: #001a23;
 }
-
+#store-Cart {
+  transform: translateY(-40px);
+}
 
 /* responsiveness */
 @media screen and (max-width: 767px) {

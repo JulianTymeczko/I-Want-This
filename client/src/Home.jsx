@@ -9,7 +9,7 @@ import {
   VanillaContext,
 } from "./App";
 import { useQuery } from "@apollo/client";
-import {QUERY_PRODUCTS} from './utils/queries';
+import { QUERY_PRODUCTS } from "./utils/queries";
 export default function Home() {
   const { data } = useQuery(QUERY_PRODUCTS);
   const { setCheckout, checkout } = useContext(CheckoutContext);
@@ -32,6 +32,7 @@ export default function Home() {
           flavour: item.flavour,
           description: item.description,
           price: item.price,
+          image: item.image,
         },
       ]);
     }
@@ -73,11 +74,7 @@ export default function Home() {
               })
               .map?.((item) => (
                 <div className="card" style={{ width: "18rem" }} key={item._id}>
-                  <img
-                    src="/src/assets/react.svg"
-                    className="card-img-top"
-                    alt="..."
-                  />
+                  <img src={item.image} className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title">{`${item.name}     ${item.price}`}</h5>
                     <p className="card-text">{`${item.flavour} ${item.description}`}</p>
