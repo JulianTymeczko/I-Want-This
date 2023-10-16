@@ -6,12 +6,16 @@ import {
   VanillaContext,
   ChocolateContext,
 } from "./App";
-
+import Auth from "./utils/auth";
 export default function Nav() {
   const { setFilter } = useContext(FilterContext);
   const { setVanilla, vanilla } = useContext(VanillaContext);
   const { setStrawberry, strawberry } = useContext(StrawberryContext);
   const { setChocolate, chocolate } = useContext(ChocolateContext);
+  let login = false;
+  if (Auth.loggedIn() == true) {
+    login = true;
+  }
   return (
     <>
       <nav
@@ -48,9 +52,9 @@ export default function Nav() {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to="/login"
+                  to={login ? "/logout" : "/login"}
                 >
-                  Login
+                  {login ? "Logout" : "Login"}
                 </Link>
               </li>
 
