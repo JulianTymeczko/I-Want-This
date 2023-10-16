@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { CheckoutContext, DefaultContext } from "./App";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";
-import { QUERY_CHECKOUT } from "../../utils/queries";
-
+import { QUERY_CHECKOUT } from "./utils/queries";
+import { useEffect } from "react";
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
 const stripePromise = loadStripe(
-  "sk_test_51O1Z0XGgy3D9mUwW6AQjEIRSU58xhAxoiKHayAnrIUPTXd7vYwfMvu54cWXtfMFbzuqO2yujg3mZXVRkKgV1v1Es00eAkx7p1j",
+  "pk_test_51O1Z0XGgy3D9mUwWFfyp4AQ85SCFyHNs7Y693aKrtHKKVFsqHMBxzv8HSYyzJNB5xplDl09Pi3APA1xz2qMl2go900wFcG2PmDj",
 );
 function Store() {
   const { checkout, setCheckout } = useContext(CheckoutContext);
@@ -40,8 +40,12 @@ function Store() {
   function submitCheckout() {
     const productIds = [];
 
-    state.cart.forEach((item) => {
-      for (let i = 0; i < item.purchaseQuantity; i++) {
+    checkout.forEach((item) => {
+      for (
+        let i = 0;
+        i < parseInt(document.getElementById(`form${item._id}`));
+        i++
+      ) {
         productIds.push(item._id);
       }
     });
@@ -58,7 +62,7 @@ function Store() {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-10">
               <div className="d-flex justify-content-between align-items-center mb-4">
-                <h3 className="fw-normal mb-0 text-black">Shopping Cart</h3>
+                <h3 id="store-Cart" className="fw-normal mb-7 text-black">Shopping Cart</h3>
               </div>
               {checkout.map((el) => (
                 <div className="card rounded-3 mb-4" key={el._id}>
@@ -75,7 +79,7 @@ function Store() {
                     <div className="row d-flex justify-content-between align-items-center">
                       <div className="col-md-2 col-lg-2 col-xl-2">
                         <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                          src={el.image}
                           className="img-fluid rounded-3"
                           alt="Cotton T-shirt"
                         />
@@ -143,6 +147,7 @@ function Store() {
 
               <div className="card">
                 <div className="card-body">
+                  <div id="amount-total">{calculateTotal()}</div>
                   <button
                     type="button"
                     className="btn btn-warning btn-block btn-lg"
