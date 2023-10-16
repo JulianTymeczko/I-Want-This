@@ -53,7 +53,6 @@ if (process.env.NODE_ENV === 'production') {
    useUnifiedTopology: true,
  });
 
- const db = mongoose.connection;
 
  db.on('error', (error) => {
    console.error('Mongoose connection error:', error);
