@@ -53,9 +53,11 @@ Development Tools:
 
 ## Usage
 
-add screenshots
+Screenshots
 
-[alt text](assets/images/screenshot.png)
+[alt text](./client/src/assets/Home.png)
+[alt text](./client/src/assets/Login.png)
+[alt text](./client/src/assets/Checkout.png)
    
 
 ## Credits
