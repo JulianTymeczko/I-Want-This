@@ -54,12 +54,10 @@ Development Tools:
 ## Usage
 
 Screenshots
-
-[alt text](./client/src/assets/Home.png)
-[alt text](./client/src/assets/Login.png)
-[alt text](./client/src/assets/Checkout.png)
-   
+![Alt text](client/src/assets/Checkout.png)
+![Alt text](client/src/assets/Home.png)
+![Alt text](client/src/assets/Login.png)
 
 ## Credits
 
-Adam, Sophie, Matthew and Julian
+Adam (https://github.com/WarrenAdam), Sophie (https://github.com/SMarquis85), Matthew (https://github.com/Shippo704) and Julian
